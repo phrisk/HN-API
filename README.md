@@ -8,7 +8,7 @@ To run the application:
 	$ node app.js
 	Express server listening on port 3000
 
-Navigating to 'localhost:3000/links' returns front page information as a JSON object:
+Navigating to `localhost:3000/links` returns front page information as a JSON object:
 
 	[
 	  {
