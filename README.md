@@ -1,5 +1,13 @@
 # HackerNews API
-An API for HackerNews written in node
+An unofficial API for [Y Combinator's HackerNews](http://news.ycombinator.com/) written in [Node](http://nodejs.org/).
+
+## About
+
+The API is currently in early stages, developed for [HNApp](https://github.com/sshannon/HNApp) - a mobile version of HackerNews.
+
+Currently the API will only return the front page links as a JSON object, but may be extended to allow full interaction and data retrieval. 
+
+Please note I am not affiliated with Y Combinator in any way.
 
 ## Usage
 
@@ -25,7 +33,7 @@ Navigating to `localhost:3000/links` returns front page information as a JSON ob
 
 ## Development
 
-Currently in early stages of development. I plan on expanding the API to return comments and so on.
+The application is built using Node. Data is loaded and scraped live from HN, parsed and returned as a JSON object.
 
 ## Tools 
 
