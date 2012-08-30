@@ -11,6 +11,5 @@ Currently in early stages of development. I plan on expanding the API to return 
 
 ## Tools 
 
- - [Nodejs](http://nodejs.org/) 	- Express
- 	- JSDOM
+ - [Nodejs](http://nodejs.org/)
  - [jQuery](http://jquery.com/)
