@@ -40,10 +40,10 @@ app.get('/links', function(req, res){
       var self = this;
       self.items = new Array();
   
-      // Error checkingh
+      // Error checking
       if(err && response.statusCode !== 200){console.log('Request error.');}
 
-      // Open up page to parse
+      // Open up page to parse, injecting jQuery
       jsdom.env({
         html: body,
         scripts: ['http://code.jquery.com/jquery-1.6.min.js']
@@ -52,6 +52,7 @@ app.get('/links', function(req, res){
 
           var $ = window.$;
 
+          // find each post and extract the link and title
           $('.title a').each(function(i, item){
             self.items[i] = {
               title: $(this).text(),
@@ -59,6 +60,7 @@ app.get('/links', function(req, res){
             };
           });
 
+          // find each subtext and extract points, author, comments, date, id
           $('.subtext').each(function(i, item){
             self.items[i].points = $("span", this).text().split(' ')[0];
             self.items[i].by = $('a[href*=user]', this).text();
