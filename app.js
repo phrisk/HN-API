@@ -62,15 +62,21 @@ app.get('/links', function(req, res){
 
           // find each subtext and extract points, author, comments, date, id
           $('.subtext').each(function(i, item){
-            self.items[i].points = $("span", this).text().split(' ')[0];
-            self.items[i].by = $('a[href*=user]', this).text();
-            self.items[i].comments = $('a[href*=item]', this).text().split(' ')[0];
-            self.items[i].date = $(this).text().split(' ')[4] + " " + $(this).text().split(' ')[5];
-            self.items[i].id = $('a[href*=item]', this).attr('href').split('=')[1];
 
-            // If the comment value = dissus, there are no comments
-            if(self.items[i].comments == 'discuss')
-                self.items[i].comments = "0";
+            // Check if the post is a normal (externally linking post)
+            // otherwise, it's a yCombinator job advert or something
+            if( $('span[id^=score]', this).length > 0 ){
+              self.items[i].points = $("span", this).text().split(' ')[0];
+              self.items[i].by = $('a[href*=user]', this).text();
+              self.items[i].comments = $('a[href*=item]', this).text().split(' ')[0];
+              self.items[i].date = $(this).text().split(' ')[4] + " " + $(this).text().split(' ')[5];
+              self.items[i].postid = $('a[href*=item]', this).attr('href').split('=')[1];
+
+              // If the comment value = dissus, there are no comments
+              if(self.items[i].comments == 'discuss')
+                  self.items[i].comments = "0";
+            }
+            
           });
 
           // remove the last item from the list, it's irrelevant
