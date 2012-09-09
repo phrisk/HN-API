@@ -3,20 +3,30 @@ An unofficial API for [Y Combinator's HackerNews](http://news.ycombinator.com/) 
 
 ## About
 
-The API is currently in early stages, developed for [HNApp](https://github.com/sshannon/HNApp) - a mobile version of HackerNews.
+The API is currently in early stages, developed for [HN-App](https://github.com/sshannon/HN-App) - a mobile version of HackerNews.
 
-Currently the API will only return the front page links as a JSON object, but may be extended to allow full interaction and data retrieval. 
+Currently the API supports showing 
 
 Please note I am not affiliated with Y Combinator in any way.
 
 ## Usage
 
-To run the application:
+###Running the application
 
 	$ node app.js
 	Express server listening on port 3000
 
-Navigating to `localhost:3000/links` returns front page information as a JSON object:
+Then navigate to `localhost:3000` 
+
+###Accepted Commands
+
+* `localhost:3000/links' -- Front page links
+* `localhost:3000/links/news2' -- Second page links
+* `localhost:3000/links/newest' -- Most recent links
+
+## Development
+
+The application is built using Node. Data is scraped live from HN, parsed and returned as a JSON object:
 
 	[
 	  {
@@ -30,10 +40,6 @@ Navigating to `localhost:3000/links` returns front page information as a JSON ob
 	  },
 	  ...
 	]
-
-## Development
-
-The application is built using Node. Data is loaded and scraped live from HN, parsed and returned as a JSON object.
 
 ## Tools 
 

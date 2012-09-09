@@ -27,11 +27,10 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+// Routes
 app.get('/', routes.index);
-
-// MY APPLICATION
-
 app.get('/links', routes.getpage);
+app.get('/links/:id', routes.getpage);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
