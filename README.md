@@ -23,6 +23,7 @@ Then navigate to `localhost:3000`
 * `localhost:3000/links` -- Front page links
 * `localhost:3000/links/news2` -- Second page links
 * `localhost:3000/links/newest` -- Most recent links
+* `localhost:3000/links/ask` -- Ask links
 
 ## Development
 
