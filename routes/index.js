@@ -15,11 +15,22 @@ var request = require('request')
 
  exports.getpage = function(req, res){
 
- 	var HNuri = 'http://news.ycombinator.com/';
+ 	var HNuri = 'http://news.ycombinator.com/';		// default URL
+ 	var validIDs = [ 'newest', 'news2', 'ask' ];	// valie page ids
+ 	var RE = new RegExp('x\?fnid\=[a-zA-Z0-9]+');	// regex for 'nextpage'
 
-	// check if id set, possible ids: newest, news2
-	if( req.params.id )
+	// check if id is a valid page id
+	if( validIDs.indexOf(req.params.id) !== -1)
 		HNuri += req.params.id;
+
+	// else, perform fnid regex and see if it passes
+	else{
+		
+		var fnid = RE.exec(req.url);
+
+		if ( fnid !== null )
+			HNuri += 'x?' + fnid;
+	}
 
 	request({uri: HNuri}, 
 		function(err, response, body){

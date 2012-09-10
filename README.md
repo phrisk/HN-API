@@ -5,8 +5,6 @@ An unofficial API for [Y Combinator's HackerNews](http://news.ycombinator.com/) 
 
 The API is currently in early stages, developed for [HN-App](https://github.com/sshannon/HN-App) - a mobile version of HackerNews.
 
-Currently the API supports front page, second page and newest links. 
-
 Please note I am not affiliated with Y Combinator in any way.
 
 ## Usage
@@ -24,6 +22,7 @@ Then navigate to `localhost:3000`
 * `localhost:3000/links/news2` -- Second page links
 * `localhost:3000/links/newest` -- Most recent links
 * `localhost:3000/links/ask` -- Ask links
+* `localhost:3000/links/x?fnid=JwXpfFQtQt` -- Valid next page links
 
 ## Development
 
