@@ -29,6 +29,7 @@ Then navigate to `localhost:3000`
 The application is built using Node. Data is scraped live from HN, parsed and returned as a JSON object:
 
 	[
+	  "items": [
 	  {
 	    "title": "Amit’s Thoughts on Grids",
 	    "href": "http://www-cs-students.stanford.edu/~amitp/game-programming/grids/",
@@ -39,7 +40,12 @@ The application is built using Node. Data is scraped live from HN, parsed and re
 	    "id": "4454637"
 	  },
 	  ...
+	  ],
+	  "nextID": "/x?fnid=v0QB25SPBk"
 	]
+
+`items` -- Array of each individual post details
+`nextID` -- fnid for next page of links
 
 ## Tools 
 

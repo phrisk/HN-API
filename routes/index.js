@@ -25,18 +25,20 @@ var request = require('request')
 
 	// else, perform fnid regex and see if it passes
 	else{
-		
-		var fnid = RE.exec(req.url);
+
+		var fnid = RE.exec(req.url);				// execute regex on url
 
 		if ( fnid !== null )
 			HNuri += 'x?' + fnid;
 	}
 
+	// Begin request
 	request({uri: HNuri}, 
 		function(err, response, body){
 
 			var self = this;
-			self.items = new Array();
+      self.json = new Object();
+			self.json.items = new Array();
 
       // Error checking
       if(err && response.statusCode !== 200){console.log('Request error.');}
@@ -54,7 +56,7 @@ var request = require('request')
 
           // find each post and extract the link and title
           $('.title a').each(function(i, item){
-          	self.items[i] = {
+          	self.json.items[i] = {
           		title: $(this).text(),
           		href: $(this).attr('href'),
           	};
@@ -66,26 +68,28 @@ var request = require('request')
             // Check if the post is a normal (externally linking post)
             // otherwise, it's a yCombinator job advert or something
             if( $('span[id^=score]', this).length > 0 ){
-            	self.items[i].points = $("span", this).text().split(' ')[0];
-            	self.items[i].by = $('a[href*=user]', this).text();
-            	self.items[i].comments = $('a[href*=item]', this).text().split(' ')[0];
-            	self.items[i].date = $(this).text().split(' ')[4] + " " + $(this).text().split(' ')[5];
-            	self.items[i].postid = $('a[href*=item]', this).attr('href').split('=')[1];
+            	self.json.items[i].points = $("span", this).text().split(' ')[0];
+            	self.json.items[i].by = $('a[href*=user]', this).text();
+            	self.json.items[i].comments = $('a[href*=item]', this).text().split(' ')[0];
+            	self.json.items[i].date = $(this).text().split(' ')[4] + " " + $(this).text().split(' ')[5];
+            	self.json.items[i].postid = $('a[href*=item]', this).attr('href').split('=')[1];
 
               // If the comment value = dissus, there are no comments
-              if(self.items[i].comments == 'discuss')
-              	self.items[i].comments = "0";
+              if(self.json.items[i].comments == 'discuss')
+              	self.json.items[i].comments = "0";
           }
 
       });
 
+          self.json.nextID = self.json.items[self.json.items.length-1].href;
+
           // remove the last item from the list, it's irrelevant
-          self.items.pop();
+          self.json.items.pop();
 
           //console.log(self.items);
 
           //We have all we came for, now let's build our views
-          res.json(self.items);
+          res.json(self.json);
 
       });
 });
