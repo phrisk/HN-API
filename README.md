@@ -24,9 +24,9 @@ Then navigate to `localhost:3000`
 * `localhost:3000/links/ask` -- Ask links
 * `localhost:3000/links/x?fnid=JwXpfFQtQt` -- Valid next page links
 
-## Development
+###Output
 
-The application is built using Node. Data is scraped live from HN, parsed and returned as a JSON object:
+Requests returned as a JSON object:
 
 	[
 	  "items": [
@@ -46,6 +46,10 @@ The application is built using Node. Data is scraped live from HN, parsed and re
 
  - `items` -- Array of each individual post details
  - `nextID` -- fnid for next page of links
+
+## Development
+
+The application is built using Node. Data is scraped live from HN, parsed and returned as a JSON object:
 
 ## Tools 
 
