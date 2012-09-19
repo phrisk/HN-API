@@ -18,34 +18,37 @@ Then navigate to `localhost:3000`
 
 ###Accepted Commands
 
+####Getting Links
+
 * `localhost:3000/links` -- Front page links
 * `localhost:3000/links/news2` -- Second page links
 * `localhost:3000/links/newest` -- Most recent links
 * `localhost:3000/links/ask` -- Ask links
 * `localhost:3000/links/x?fnid=JwXpfFQtQt` -- Valid next page links
 
-###Output
+**Returns:**
 
-Requests returned as a JSON object:
+* `items` -- Array containing each individual post's details:
+  * `title` -- post title
+  * `href` -- post link
+  * `points` -- post points
+  * `by` -- post author
+  * `comments` -- number of comments
+  * `date` -- how old the post is
+  * `id` -- unique post id
+* `nextID` -- fnid for next page of links
 
-	[
-	  "items": [
-	  {
-	    "title": "Amit’s Thoughts on Grids",
-	    "href": "http://www-cs-students.stanford.edu/~amitp/game-programming/grids/",
-	    "points": "67",
-	    "by": "kayral",
-	    "comments": "3",
-	    "date": "1 hour",
-	    "id": "4454637"
-	  },
-	  ...
-	  ],
-	  "nextID": "/x?fnid=v0QB25SPBk"
-	]
+####Getting Comments
 
- - `items` -- Array of each individual post details
- - `nextID` -- fnid for next page of links
+* `localhost:3000/post/4543202` -- Retrieve comments
+
+**Returns:**
+
+* `text` -- comment text
+* `by` -- comment author
+* `date` -- how old the comment is
+* `indent` -- indentation level of comment
+* `id` -- unique comment id
 
 ## Development
 
