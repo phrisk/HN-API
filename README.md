@@ -7,18 +7,16 @@ The API is currently in early stages, developed for [HN-App](https://github.com/
 
 Please note I am not affiliated with Y Combinator in any way.
 
-## Usage
-
-###Running the application
+##Running the application
 
 	$ node app.js
 	Express server listening on port 3000
 
 Then navigate to `localhost:3000` 
 
-###Accepted Commands
+##Accepted Commands
 
-####Getting Links
+###Getting Links
 
 * `localhost:3000/links` -- Front page links
 * `localhost:3000/links/news2` -- Second page links
@@ -26,7 +24,7 @@ Then navigate to `localhost:3000`
 * `localhost:3000/links/ask` -- Ask links
 * `localhost:3000/links/x?fnid=JwXpfFQtQt` -- Valid next page links
 
-**Returns:**
+####Returns:
 
 * `items` -- Array containing each individual post's details:
   * `title` -- post title
@@ -38,11 +36,11 @@ Then navigate to `localhost:3000`
   * `id` -- unique post id
 * `nextID` -- fnid for next page of links
 
-####Getting Comments
+###Getting Comments
 
 * `localhost:3000/post/4543202` -- Retrieve comments
 
-**Returns:**
+####Returns:
 
 * `text` -- comment text
 * `by` -- comment author
