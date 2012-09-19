@@ -26,17 +26,17 @@ Then navigate to `localhost:3000`
 * `localhost:3000/links/ask` -- Ask links
 * `localhost:3000/links/x?fnid=JwXpfFQtQt` -- Valid next page links
 
-**Returns:**
+_Returns:_
 
-* `items` -- Array containing each individual post's details:
-  * `title` -- post title
-  * `href` -- post link
-  * `points` -- post points
-  * `by` -- post author
-  * `comments` -- number of comments
-  * `date` -- how old the post is
-  * `id` -- unique post id
-* `nextID` -- fnid for next page of links
+`items` -- Array containing each individual post's details:
+  `title` -- post title
+  `href` -- post link
+  `points` -- post points
+  `by` -- post author
+  `comments` -- number of comments
+  `date` -- how old the post is
+  `id` -- unique post id
+`nextID` -- fnid for next page of links
 
 ####Getting Comments
 
@@ -44,11 +44,11 @@ Then navigate to `localhost:3000`
 
 **Returns:**
 
-* `text` -- comment text
-* `by` -- comment author
-* `date` -- how old the comment is
-* `indent` -- indentation level of comment
-* `id` -- unique comment id
+`text` -- comment text
+`by` -- comment author
+`date` -- how old the comment is
+`indent` -- indentation level of comment
+`id` -- unique comment id
 
 ## Development
 
