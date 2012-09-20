@@ -128,7 +128,8 @@ exports.getpage = function(req, res){
     function(err, response, body){
 
       var self = this;
-      self.comment = new Array();
+      self.json = new Object();
+      self.json.comments = new Array();
 
       // Error checking - BUG: this needs fixed, when no internet connention
       // this casues node to crash as response.statusCode is undefined
@@ -145,10 +146,21 @@ exports.getpage = function(req, res){
 
         var $ = window.$;
 
+          self.json.post = {
+            title: $('.title a').text(),
+            href: $('.title a').attr('href'),
+            domain: ( $('.title .comhead').text().length > 0 ? $('.title .comhead').text() : "(self post)" ), // i.e if there is a domain, use it, otherwise it is a self post
+            points: $("span", ".subtext").text().split(' ')[0],
+            by: $('a[href*=user]', ".subtext").text(),
+            comments: ( $('a[href*=item]', ".subtext").text().split(' ')[0] == "discuss" ? "0" : $('a[href*=item]', ".subtext").text().split(' ')[0] ), // // If the comment value = dissus, there are no comments
+            date: $(".subtext").text().split(' ')[4] + " " + $(".subtext").text().split(' ')[5],
+            postid: $('a[href*=item]', ".subtext").attr('href').split('=')[1]
+          };
+
           // find each subtext and extract points, author, comments, date, id
           $('td td table').each(function(i, item){
 
-            self.comment[i] = {
+            self.json.comments[i] = {
               text: $('tr td:eq(2) span[class*=comment]', this).text(),
               by: $('tr td:eq(2) span[class*=comhead] a[href*=user]', this).text(),
               date: $('tr td:eq(2) span[class*=comhead]', this).text().split(' ')[1] + " " + $('tr td:eq(2) span[class*=comhead]', this).text().split(' ')[2],
@@ -159,7 +171,7 @@ exports.getpage = function(req, res){
           });
 
           // Data scraped and processed, therefore render as JSON
-          res.json(self.comment);
+          res.json(self.json);
 
         });
     });

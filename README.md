@@ -42,11 +42,21 @@ Then navigate to `localhost:3000`
 
 ####Returns:
 
-* `text` -- comment text
-* `by` -- comment author
-* `date` -- how old the comment is
-* `indent` -- indentation level of comment
-* `id` -- unique comment id
+* `comments` -- Array containing each individual comment's details:
+  * `text` -- comment text
+  * `by` -- comment author
+  * `date` -- how old the comment is
+  * `indent` -- indentation level of comment
+  * `id` -- unique comment id
+* `post` -- Array containing the post's details:
+  * `title` -- post title
+  * `href` -- post link
+  * `domain` -- the domain, i.e "(imgur.com)"
+  * `points` -- post points
+  * `by` -- post author
+  * `comments` -- number of comments
+  * `date` -- how old the post is
+  * `postid` -- unique post id
 
 ## Development
 
