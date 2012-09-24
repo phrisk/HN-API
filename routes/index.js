@@ -63,10 +63,11 @@ exports.getpage = function(req, res){
       	var $ = window.$;
 
           // find each post and extract the link and title
-          $('.title a').each(function(i, item){
+          $('.title:odd').each(function(i, item){
           	self.json.items[i] = {
-          		title: $(this).text(),
-          		href: $(this).attr('href')
+          		title: $('a', this).text(),
+          		url: $('a', this).attr('href'),
+              domain: ( $('.comhead', this).text().length > 0 ? $('.comhead', this).text().replace(/ /g,'') : '(self post)' ),
           	};
           });
 
@@ -76,15 +77,15 @@ exports.getpage = function(req, res){
             // Check if the post is a normal (externally linking post)
             // otherwise, it's a yCombinator job advert or something
             if( $('span[id^=score]', this).length > 0 ){
-            	self.json.items[i].points = $("span", this).text().split(' ')[0];
+            	self.json.items[i].points = $('span', this).text().split(' ')[0];
             	self.json.items[i].by = $('a[href*=user]', this).text();
             	self.json.items[i].comments = $('a[href*=item]', this).text().split(' ')[0];
-            	self.json.items[i].date = $(this).text().split(' ')[4] + " " + $(this).text().split(' ')[5];
+            	self.json.items[i].date = $(this).text().split(' ')[4] + ' ' + $(this).text().split(' ')[5];
             	self.json.items[i].postid = $('a[href*=item]', this).attr('href').split('=')[1];
 
               // If the comment value = dissus, there are no comments
               if(self.json.items[i].comments == 'discuss')
-              	self.json.items[i].comments = "0";
+              	self.json.items[i].comments = '0';
             }
 
           });
@@ -148,13 +149,13 @@ exports.getpage = function(req, res){
 
           self.json.post = {
             title: $('.title a').text(),
-            href: $('.title a').attr('href'),
-            domain: ( $('.title .comhead').text().length > 0 ? $('.title .comhead').text() : "(self post)" ), // i.e if there is a domain, use it, otherwise it is a self post
-            points: $("span", ".subtext").text().split(' ')[0],
-            by: $('a[href*=user]', ".subtext").text(),
-            comments: ( $('a[href*=item]', ".subtext").text().split(' ')[0] == "discuss" ? "0" : $('a[href*=item]', ".subtext").text().split(' ')[0] ), // // If the comment value = dissus, there are no comments
-            date: $(".subtext").text().split(' ')[4] + " " + $(".subtext").text().split(' ')[5],
-            postid: $('a[href*=item]', ".subtext").attr('href').split('=')[1]
+            url: $('.title a').attr('href'),
+            domain: ( $('.title .comhead').text().length > 0 ? $('.title .comhead').text().replace(/ /g,'') : '(self post)' ), // i.e if there is a domain, use it, otherwise it is a self post
+            points: $('span', '.subtext').text().split(' ')[0],
+            by: $('a[href*=user]', '.subtext').text(),
+            comments: ( $('a[href*=item]', '.subtext').text().split(' ')[0] == 'discuss' ? '0' : $('a[href*=item]', '.subtext').text().split(' ')[0] ), // // If the comment value = dissus, there are no comments
+            date: $('.subtext').text().split(' ')[4] + ' ' + $('.subtext').text().split(' ')[5],
+            postid: $('a[href*=item]', '.subtext').attr('href').split('=')[1]
           };
 
           // find each subtext and extract points, author, comments, date, id
@@ -163,7 +164,7 @@ exports.getpage = function(req, res){
             self.json.comments[i] = {
               text: $('tr td:eq(2) span[class*=comment]', this).text(),
               by: $('tr td:eq(2) span[class*=comhead] a[href*=user]', this).text(),
-              date: $('tr td:eq(2) span[class*=comhead]', this).text().split(' ')[1] + " " + $('tr td:eq(2) span[class*=comhead]', this).text().split(' ')[2],
+              date: $('tr td:eq(2) span[class*=comhead]', this).text().split(' ')[1] + ' ' + $('tr td:eq(2) span[class*=comhead]', this).text().split(' ')[2],
               indent: $('tr td:eq(0) img', this).attr('width') / 40,
               id: $('tr td:eq(2) span[class*=comhead] a[href*=item]', this).attr('href').split('=')[1]
             };

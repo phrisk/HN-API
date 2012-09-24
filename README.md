@@ -28,7 +28,8 @@ Then navigate to `localhost:3000`
 
 * `items` -- Array containing each individual post's details:
   * `title` -- post title
-  * `href` -- post link
+  * `url` -- post link
+  * `domain` -- the domain, i.e "(imgur.com)"
   * `points` -- post points
   * `by` -- post author
   * `comments` -- number of comments
@@ -50,7 +51,7 @@ Then navigate to `localhost:3000`
   * `id` -- unique comment id
 * `post` -- Array containing the post's details:
   * `title` -- post title
-  * `href` -- post link
+  * `url` -- post link
   * `domain` -- the domain, i.e "(imgur.com)"
   * `points` -- post points
   * `by` -- post author
