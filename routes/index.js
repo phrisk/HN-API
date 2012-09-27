@@ -94,7 +94,7 @@ exports.getpage = function(req, res){
           // posts, basically here, we take the href for the next page 
           // (last element of items[]) and set it to nextID
           //self.json.nextID = self.json.items[self.json.items.length-1].href;
-          self.json.nextID = $('.title:nth-child(2) a').attr('href');
+          self.json.nextID = $('.title:nth-child(2) a').attr('href').replace(/\//,'');
 
           // remove the last element from items[]
           //self.json.items.pop();
