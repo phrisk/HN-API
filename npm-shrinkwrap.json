@@ -1,0 +1,128 @@
+{
+  "name": "HackerNews-API",
+  "version": "0.1.0",
+  "dependencies": {
+    "express": {
+      "version": "3.0.0rc3",
+      "dependencies": {
+        "connect": {
+          "version": "2.4.3",
+          "dependencies": {
+            "qs": {
+              "version": "0.4.2"
+            },
+            "formidable": {
+              "version": "1.0.11"
+            },
+            "bytes": {
+              "version": "0.1.0"
+            },
+            "pause": {
+              "version": "0.0.1"
+            }
+          }
+        },
+        "commander": {
+          "version": "0.6.1"
+        },
+        "range-parser": {
+          "version": "0.0.4"
+        },
+        "mkdirp": {
+          "version": "0.3.3"
+        },
+        "cookie": {
+          "version": "0.0.4"
+        },
+        "crc": {
+          "version": "0.2.0"
+        },
+        "fresh": {
+          "version": "0.1.0"
+        },
+        "methods": {
+          "version": "0.0.1"
+        },
+        "send": {
+          "version": "0.0.3",
+          "dependencies": {
+            "mime": {
+              "version": "1.2.6"
+            }
+          }
+        },
+        "debug": {
+          "version": "0.7.0"
+        }
+      }
+    },
+    "jade": {
+      "version": "0.27.2",
+      "dependencies": {
+        "commander": {
+          "version": "0.6.1"
+        },
+        "mkdirp": {
+          "version": "0.3.0"
+        }
+      }
+    },
+    "url": {
+      "version": "0.7.9",
+      "dependencies": {
+        "querystring": {
+          "version": "0.1.0"
+        },
+        "punycode": {
+          "version": "1.0.0"
+        }
+      }
+    },
+    "request": {
+      "version": "2.11.4",
+      "dependencies": {
+        "form-data": {
+          "version": "0.0.3",
+          "dependencies": {
+            "combined-stream": {
+              "version": "0.0.3",
+              "dependencies": {
+                "delayed-stream": {
+                  "version": "0.0.5"
+                }
+              }
+            },
+            "async": {
+              "version": "0.1.9"
+            }
+          }
+        },
+        "mime": {
+          "version": "1.2.7"
+        }
+      }
+    },
+    "jsdom": {
+      "version": "0.2.15",
+      "dependencies": {
+        "htmlparser": {
+          "version": "1.7.6"
+        },
+        "request": {
+          "version": "2.10.0"
+        },
+        "cssom": {
+          "version": "0.2.5"
+        },
+        "contextify": {
+          "version": "0.1.3",
+          "dependencies": {
+            "bindings": {
+              "version": "1.0.0"
+            }
+          }
+        }
+      }
+    }
+  }
+}

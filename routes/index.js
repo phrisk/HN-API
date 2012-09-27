@@ -93,15 +93,18 @@ exports.getpage = function(req, res){
           // The last scraped result is always the link for the next page of
           // posts, basically here, we take the href for the next page 
           // (last element of items[]) and set it to nextID
-          self.json.nextID = self.json.items[self.json.items.length-1].href;
+          //self.json.nextID = self.json.items[self.json.items.length-1].href;
+          self.json.nextID = $('.title:nth-child(2) a').attr('href');
 
           // remove the last element from items[]
-          self.json.items.pop();
+          //self.json.items.pop();
 
           //console.log(self.items);
 
           // Data scraped and processed, therefore render as JSON
           res.json(self.json);
+
+          self = null;
 
       });
     });

@@ -1,12 +1,17 @@
 {
   "name": "HackerNews-API",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "author" : "sshannon",
+  "description" : "API for Y Combinators Hacker News",
   "private": true,
   "scripts": {
     "start": "node app"
   },
   "dependencies": {
     "express": "3.0.0rc3",
-    "jade": "*"
+    "jade": "*",
+    "url" : "*",
+    "request": "*",
+    "jsdom": "*"
   }
 }
